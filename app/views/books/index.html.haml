@@ -1,30 +1,35 @@
+.navbar
+  .navbar-inner
+    %a.brand{:href => "#"} Books For DAIZ
+    %ul.nav
+      %li.active 
+        %a{:href => "#"} Home
+      %li 
+        %a{:href => "#"} Link
+      %li 
+        %a{:href => "#"} Link
+    
+
+
 %h1 Yo here be some books!
 %h2 Books to the MAXXX
 %h3 Yo I f'n love books.
+
+=  link_to 'New Book', new_book_path
 
 %table
   %tr
     %th Title
     %th Author
-    %th Isbn
-    %th 
-    %th 
-    %th 
-  
+    %th ISBN
+    %br
 
-- @books.each do |book| 
-  %tr
-    %td 
-    =  book.title 
-    %td 
-    =  book.author 
-    %td 
-    =  book.isbn 
-    %td 
-    =  link_to 'Show', book 
-    %td 
-    =  link_to 'Edit', edit_book_path(book) 
-    %td 
-    =  link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } 
+  - @books.each do |book| 
+    %tr
+      %td= book.title 
+      %td= book.author 
+      %td= book.isbn 
+      %td= link_to 'Show', book 
+      %td=  link_to 'Edit', edit_book_path(book.id) 
+      %td=  link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?' } 
 
-=  link_to 'New Book', new_book_path 
