@@ -32,6 +32,8 @@ end
 gem 'carrierwave'
 gem 'jquery-rails'
 gem 'devise'
+gem 'binding_of_caller'
+gem 'cancan'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
