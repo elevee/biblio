@@ -1,5 +1,8 @@
 %p#notice= notice
 %p
+  
+  = image_tag(@book.avatar_url) if @book.avatar?
+%p
   %b Title:
   = @book.title
 %p
