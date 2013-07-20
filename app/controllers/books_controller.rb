@@ -7,13 +7,19 @@ class BooksController < ApplicationController
 
   def index
 
-    @books = Book.all
-    # @book = Book.find(params[:id])
+    if current_user.present?
+      @user = current_user.id
+      @books = Book.where("user_id = @user")
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @books }
+    else
+      @books = []
     end
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @books }
+
+    
   end
 
   # GET /books/1
@@ -47,6 +53,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
+    @book.user = current_user
 
     respond_to do |format|
       if @book.save
@@ -87,7 +94,8 @@ class BooksController < ApplicationController
     end
   end
 
-  def avatar
+  # def avatar
 
-  end
+  # end
+end
 end

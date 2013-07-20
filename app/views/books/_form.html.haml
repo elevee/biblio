@@ -1,4 +1,4 @@
-= form_for(@book) do |f|
+= form_for @book do |f|
   - if @book.errors.any?
     #error_explanation
       %h2
@@ -9,19 +9,19 @@
           %li= msg
   .field
     = f.label :title
-    %br/
+    %br
     = f.text_field :title
   .field
     = f.label :author
-    %br/
+    %br
     = f.text_field :author
   .field
     = f.label :isbn
-    %br/
+    %br
     = f.text_field :isbn
   .field
     = f.label :avatar
-    %br/
+    %br
     = f.file_field :avatar
   .actions
     = f.submit
