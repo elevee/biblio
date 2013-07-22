@@ -1,15 +1,10 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!
-  
-
-  # GET /books
-  # GET /books.json
 
   def index
 
     if current_user.present?
-      @user = current_user.id
-      @books = Book.where("user_id = @user")
+      @books = User.find(current_user.id).books
 
     else
       @books = []
@@ -19,22 +14,8 @@ class BooksController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @books }
 
-    
   end
-
-  # GET /books/1
-  # GET /books/1.json
-  def show
-    @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @book }
-    end
-  end
-
-  # GET /books/new
-  # GET /books/new.json
+  
   def new
     @book = Book.new
 
@@ -44,13 +25,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # GET /books/1/edit
-  def edit
-    @book = Book.find(params[:id])
-  end
-
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(params[:book])
     @book.user = current_user
@@ -66,8 +40,29 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @book = Book.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @book }
+    end
+  end
+
+  # GET /books/new
+  # GET /books/new.json
+
   # PUT /books/1
   # PUT /books/1.json
+
+  # GET /books/1/edit
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  # POST /books
+  # POST /books.json
+
   def update
     @book = Book.find(params[:id])
 
@@ -94,8 +89,8 @@ class BooksController < ApplicationController
     end
   end
 
-  # def avatar
-
-  # end
+  def avatar
+  
+  end
 end
 end
