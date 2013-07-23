@@ -1,3 +1,7 @@
+.page-header 
+  %h1 Biblio
+  =image_tag "/images/library2.jpg"
+
 .navbar
   .navbar-inner
     %a.brand{:href => "#"} Books For DAIZ
@@ -9,15 +13,11 @@
       %li 
         %a{:href => "#"} Link
     
-
-
-%h1 Yo here be some books!
-%h2 Books to the MAXXX
-%h3 Yo I f'n love books.
+%h3= "List of #{current_user.email}'s Books"
 
 =  link_to 'New Book', new_book_path
 
-%table
+%table.table-striped.table-hover
   %tr
     %th Title
     %th Author

@@ -2,7 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-img {
+img.thumb {
 	width: 140px;
 	height: 100px;
 }
+
+img.banner {
+	width: 900px;
+	height: 400px;
+}
+
+table {
+	width: 80%;
+}
+
