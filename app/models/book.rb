@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
         result = client.book_by_isbn(self.isbn)
         self.author = result.authors.first[1].name
         self.title = result.title
-        # self.avatar = result.image_url
+        self.cover_art = result.image_url
       end
   end
 end

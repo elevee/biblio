@@ -1,8 +1,11 @@
 %p#notice= notice
 %p
   
+  / - if @book.avatar#.present?
   = image_tag(@book.avatar_url, :class => "thumb") if @book.avatar.present?
- 
+  / - else 
+  = image_tag(@book.cover_art) if @book.avatar.present? == false
+
 %p
   %b Title:
   = @book.title
@@ -12,6 +15,7 @@
 %p
   %b Isbn:
   = @book.isbn
+
 = link_to 'Edit', edit_book_path(@book)
 |
 = link_to 'Back', books_path
