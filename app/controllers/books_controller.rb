@@ -13,7 +13,7 @@ class BooksController < ApplicationController
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @books }
-
+      end
   end
   
   def new
@@ -29,6 +29,11 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
     @book.user = current_user
 
+    # if @book.isbn?
+    #   # if @book.title == nil || @book.author == nil || @book.avatar == nil
+    #   @book.isbn_lookup
+    # end
+
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -38,6 +43,7 @@ class BooksController < ApplicationController
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
+  
   end
 
   def show
@@ -92,5 +98,5 @@ class BooksController < ApplicationController
   def avatar
   
   end
-end
+
 end
