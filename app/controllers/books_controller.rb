@@ -46,6 +46,15 @@ class BooksController < ApplicationController
   
   end
 
+=begin
+  1) url.we/path?key=value&key2=value2 ==>> params = {key: value, key2: value2}
+  2) url.com/path/with/3 +
+      config: match '/path/with/:id'
+      ==>> params = {id: 3}
+  3) form_for @book do |f| ... end ==>
+    params = {book: {hash_of_books_stuff} }
+=end
+
   def show
     @book = Book.find(params[:id])
 
